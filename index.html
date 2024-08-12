@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="IP Address Tracker - Frontend Mentor">
+  <meta name="keywords" content="IP Address Tracker, Frontend Mentor">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Map API -->
+  <link rel="stylesheet" href="leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <title>Ultimate IP Address Tracker</title>
+</head>
+
+<body>
+  <main class="main-container">
+    <!-- Header Section -->
+    <section class="header-section">
+      <h1>Ultimate IP Address Tracker</h1>
+      <!-- Search Form -->
+      <form method="get" class="search-form">
+        <input type="text" placeholder="Search for any IP address or domain name" required class="input-field">
+
+        <button type="submit" class="submit-btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+
+      </form>
+    </section>
+    <!-- Data Section -->
+    <section class="data-section">
+      <!-- IP Address -->
+      <article>
+        <h2>IP Address</h2>
+        <p class="ipAddressField"></p>
+      </article>
+      <hr>
+      <!-- Location -->
+      <article>
+        <h2>Location</h2>
+        <p class="locationInput"></p>
+      </article>
+      <hr>
+      <!-- Timezone -->
+      <article>
+        <h2>Timezone</h2>
+        <p class="timezoneInput"></p>
+      </article>
+      <hr>
+      <!-- ISP-->
+      <article>
+        <h2>ISP</h2>
+        <p class="ispInput"></p>
+      </article>
+    </section>
+
+    <!-- Map -->
+    <section class="map-section">
+
+      <div id="map"></div>
+    </section>
+    
+  </main>
+
+
+
+
+
+
+  <div class="row">
+    <div class="column">
+      <table>
+        <tr>
+          <th>Location Information</th>
+        </tr>
+        <tr>
+          <td>Continent Code:</td>
+          <td class="continent-code"></td>
+        </tr>
+        <tr>
+          <td>Continent Name:</td>
+          <td class="continent-name"></td>
+        </tr>
+        <tr>
+          <td>Country Code: </td>
+          <td class="country-code"></td>
+        </tr>
+        <tr>
+          <td>Country Name:</td>
+          <td class="country-name"></td>
+        </tr>
+        <tr>
+          <td>Country Capital:</td>
+          <td class="country-capital"></td>
+        </tr>
+        <tr>
+          <td>State/Province:</td>
+          <td class="state-province"></td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td class="city"></td>
+        </tr>
+        <tr>
+          <td>Zip Code:</td>
+          <td class="zip-code"></td>
+        </tr>
+        <tr>
+          <td>Latitude:</td>
+          <td class="latitude"></td>
+        </tr>
+        <tr>
+          <td>Longitude:</td>
+          <td class="longitude"></td>
+        </tr>
+        <tr>
+          <td>Calling Code:</td>
+          <td class="calling-code"></td>
+        </tr>
+        <tr>
+          <td>Country TLD:</td>
+          <td class="country-tld"></td>
+        </tr>
+        <tr>
+          <td>Languages:</td>
+          <td class="languages"></td>
+        </tr>
+        <tr>
+          <td>Country Flag:</td>
+          <td class="country-flag"><img class="country__flag" id="countryFlag" src="" alt="country__flag"></td>
+        </tr>
+        <tr>
+          <td>Geoname ID:</td>
+          <td class="geoname-id"></td>
+        </tr>
+      </table>
+    </div>
+
+
+
+
+    <div class="column">
+      <table>
+        <tr>
+          <th>Network and ISP Information</th>
+        </tr>
+        <tr>
+          <td>IP:</td>
+          <td class="ip"></td>
+        </tr>
+        <tr>
+          <td>Hostname:</td>
+          <td class="hostname"></td>
+        </tr>
+        <tr>
+          <td>ISP:</td>
+          <td class="isp"></td>
+        </tr>
+
+        <tr>
+          <td>Organization:</td>
+          <td class="organization"></td>
+        </tr>
+        <tr>
+          <td>ASN:</td>
+          <td class="asn"></td>
+        </tr>
+        <tr>
+          <td>Connection Type:</td>
+          <td class="connection-type"></td>
+        </tr>
+        <tr>
+          <td>Currency Name:</td>
+          <td class="currency-name"></td>
+        </tr>
+        <tr>
+          <td>Currency Code:</td>
+          <td class="currency-code"></td>
+        </tr>
+        <tr>
+          <td>Currency Symbol:</td>
+          <td class="currency-symbol"></td>
+        </tr>
+        <tr>
+          <td>Time Zone Name:</td>
+          <td class="time-zone-name"></td>
+        </tr>
+        <tr>
+          <td>Time Zone Offset:</td>
+          <td class="time-zone-offset"></td>
+        </tr>
+        <tr>
+          <td>Current Time:</td>
+          <td class="current-time"></td>
+        </tr>
+        <tr>
+          <td>Current Time Unix:</td>
+          <td class="current-time-unix"></td>
+        </tr>
+        <tr>
+          <td>Is DST:</td>
+          <td class="is-dst"></td>
+        </tr>
+        <tr>
+          <td>DST Savings:</td>
+          <td class="dst-savings"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+  <footer class="footer">
+    <div class="footer__container container grid">
+      <ul class="footer__links">
+        &#169; All Rights Reserved By Ultimate IP Address Tracker.
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Map API -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='module' src='config.js'></script>
+
+
+  <script type='module' src="app.js"></script>
+  
+</body>
+
+</html>
